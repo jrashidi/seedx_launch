@@ -1,5 +1,6 @@
 class SignupQueue < ApplicationRecord
   has_secure_token :user_hash
+  validates :email, uniqueness: true
 
   def self.get_position_in_queue(id, count_invited_users)
     SignupQueue.count_by_sql ["SELECT COUNT(id) FROM signup_queues 
