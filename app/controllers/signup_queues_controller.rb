@@ -5,7 +5,7 @@ class SignupQueuesController < ApplicationController
   end
 
   def show
-    
+    @signup_queue = SignupQueue.find(params[:id])
   end
 
   def new
@@ -15,6 +15,13 @@ class SignupQueuesController < ApplicationController
   def create
     @signup_queue = SignupQueue.new(signup_queue_params)
 
+    if params[:user_hash].present?
+      @user = SignupQueue.find_by_user_hash(params[:user_hash])
+      @user.increment!(:invited_users_count)
+
+      @signup_queue.invited_by_user_id = @user.id
+    end
+
     respond_to do |format|
       if @signup_queue.save
         format.html { redirect_to @signup_queue, notice: 'signup_queue was successfully created.' }
@@ -22,6 +29,9 @@ class SignupQueuesController < ApplicationController
         format.html { render action: 'new' }
       end
     end
+  end
+
+  def destroy
   end
 
   private

@@ -9,6 +9,7 @@
     <div class="form-group">
       <%= f.text_field :email, class: "form-control", placeholder: "email address" %>
     </div>
+    <input name="user_hash" type="hidden" value="<%= params[:user_hash] %>" />
     <%= f.submit "Be The First" %>
   <% end %>
 
