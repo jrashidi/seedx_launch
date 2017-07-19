@@ -1,0 +1,26 @@
+<div class="container">
+  <table class="table table-striped tasks">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>email</th>
+        <th>user_hash</th>
+        <th>invited_by_user_id</th>
+        <th>invited_users_count</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @signup_queues.each do |signup_queue| %>
+        <tr>
+          <td><%= signup_queue.id %></td>
+          <td><%= signup_queue.email %></td>
+          <td><%= signup_queue.user_hash %></td>
+          <td><%= signup_queue.invited_by_user_id %></td>
+          <td><%= signup_queue.invited_users_count %></td>
+          <td><%= link_to 'Destroy', signup_queue_path(signup_queue), method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

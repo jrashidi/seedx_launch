@@ -1,0 +1,15 @@
+<div class="main">
+  <header>
+    logo
+    <h2>The Future is Now.</h2>
+    <h3>This Website is Live Soon!</h3>
+  </header>
+
+  <%= form_for @signup_queue, html: {class: "form-inline"} do |f| %>
+    <div class="form-group">
+      <%= f.text_field :email, class: "form-control", placeholder: "email address" %>
+    </div>
+    <%= f.submit "Be The First" %>
+  <% end %>
+
+</div>
