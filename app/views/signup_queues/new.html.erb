@@ -1,16 +1,17 @@
 <div class="main">
   <header>
-    logo
+    <div class="site-logo"><a href="/"><img height="100" alt="Sass" src="/assets/signup_queues/logo.png"></a></div>
     <h2>The Future is Now.</h2>
     <h3>This Website is Live Soon!</h3>
   </header>
 
-  <%= form_for @signup_queue, html: {class: "form-inline"} do |f| %>
-    <div class="form-group">
-      <%= f.text_field :email, class: "form-control", placeholder: "email address" %>
-    </div>
+  <%= form_for @signup_queue, html: {class: "form-inline", id: "signup-form"} do |f| %>
     <input name="user_hash" type="hidden" value="<%= params[:user_hash] %>" />
-    <%= f.submit "Be The First" %>
+    <div class="form-group">
+      <%= f.email_field :email, class: "signup-field", id: "signup-email", placeholder: "email address" %>
+      <%= f.submit "Be The First" %>
+      <p class="validation-error" id="email-error">Please enter the email first</p>
+    </div>
   <% end %>
 
 </div>
