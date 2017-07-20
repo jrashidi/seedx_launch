@@ -14,11 +14,11 @@ body {
   background-position: center; 
   text-align: center;
 }
-.main header {
+.main .header {
   color: #fff;
   padding-top: 9%;
 }
-.main h2, h3 {
+.header h2, .header h3 {
   text-shadow: 2px 2px 5px #000;
 }
 .main .form-inline input[type="submit"]{

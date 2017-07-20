@@ -19,8 +19,8 @@ class SignupQueuesController < ApplicationController
     else
       @signup_queue = SignupQueue.new(signup_queue_params)
 
-      if params[:user_hash].present?
-        @user = SignupQueue.find_by_user_hash(params[:user_hash])
+      if params[:ref].present?
+        @user = SignupQueue.find_by_user_hash(params[:ref])
         @user.increment!(:invited_users_count)
 
         @signup_queue.invited_by_user_id = @user.id

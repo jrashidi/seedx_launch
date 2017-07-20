@@ -9,6 +9,6 @@
 
   <p>Or share this unique link:</p>
 
+  <%= link_to root_url(:ref => @signup_queue.user_hash), root_path(:ref => @signup_queue.user_hash) %>
 
-  <%= link_to @signup_queue.user_hash, action: "new", user_hash: @signup_queue.user_hash %>
 </div>
