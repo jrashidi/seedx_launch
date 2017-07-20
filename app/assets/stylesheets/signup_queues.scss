@@ -8,7 +8,7 @@ body {
 .main {
   width: 100%;
   height: 100vh;
-  background-image: url(/assets/signup_queues/livingroom.jpg);
+  background-image: url(/assets/signup_queues/livingroom_mini.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; 
@@ -16,7 +16,10 @@ body {
 }
 .main header {
   color: #fff;
-  // padding-top: 8%;
+  padding-top: 9%;
+}
+.main h2, h3 {
+  text-shadow: 2px 2px 5px #000;
 }
 .main .form-inline input[type="submit"]{
   padding: 6px 12px;

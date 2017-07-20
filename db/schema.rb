@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719141659) do
+ActiveRecord::Schema.define(version: 20170720201231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170719141659) do
     t.integer  "invited_users_count", default: 0
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.index ["user_hash"], name: "index_signup_queues_on_user_hash", unique: true, using: :btree
   end
 
 end
