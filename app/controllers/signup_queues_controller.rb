@@ -28,6 +28,7 @@ class SignupQueuesController < ApplicationController
 
       respond_to do |format|
         if @signup_queue.save
+          SignupMailer.send_confirmation_email(@signup_queue).deliver
           format.html { redirect_to @signup_queue, notice: 'signup_queue was successfully created.' }
         else
           format.html { render action: 'new' }
@@ -40,6 +41,15 @@ class SignupQueuesController < ApplicationController
     @signup_queue = SignupQueue.find(params[:id])
     @signup_queue.destroy
     redirect_to signup_queues_path
+  end
+
+  def confirm_email
+    @user = SignupQueue.find_by_user_hash(params[:ref])
+    if @user.is_email_confirmed == false
+      @user.is_email_confirmed = true
+      @user.save
+    end
+    redirect_to action: "show", id: @user.id
   end
 
   private

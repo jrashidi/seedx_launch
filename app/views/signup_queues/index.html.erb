@@ -7,6 +7,7 @@
         <th>user_hash</th>
         <th>invited_by_user_id</th>
         <th>invited_users_count</th>
+        <th>is_email_confirmed</th>
         <th></th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
           <td><%= signup_queue.user_hash %></td>
           <td><%= signup_queue.invited_by_user_id %></td>
           <td><%= signup_queue.invited_users_count %></td>
+          <td><%= signup_queue.is_email_confirmed %></td>
           <td><%= link_to 'Destroy', signup_queue_path(signup_queue), method: :delete %></td>
         </tr>
       <% end %>

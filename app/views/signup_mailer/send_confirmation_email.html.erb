@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for signing up!</h1>
+    <p>Please simply click the link below, or copy and paste it into your browser and press enter:</p>
+    <%= link_to url_for(controller: "signup_queues", action: "confirm_email", ref: @user.user_hash), controller: "signup_queues", action: "confirm_email", ref: @user.user_hash %>
+  </body>
+</html>

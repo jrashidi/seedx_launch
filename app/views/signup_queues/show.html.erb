@@ -1,14 +1,15 @@
 <div class="container">
-  <h2>Thank you!</h2>
-  <p>We have added your email address to the signup queue.</p>
-
-  <div>
-    <h3><%= SignupQueue.get_position_in_queue(@signup_queue.id, @signup_queue.invited_users_count) %></h3>
-    <p>People ahead of you</p>
-  </div>
-
-  <p>Or share this unique link:</p>
-
-  <%= link_to root_url(:ref => @signup_queue.user_hash), root_path(:ref => @signup_queue.user_hash) %>
-  <%= social_share_button_tag("Share", :url => root_url(:ref => @signup_queue.user_hash)) %>
+  <% if @signup_queue.is_email_confirmed == false %>
+      <h3>Please check your mail</h3>
+  <% else %>
+      <h2>Thank you!</h2>
+      <p>We have added your email address to the signup queue.</p>
+      <div>
+        <h3><%= SignupQueue.get_position_in_queue(@signup_queue.id, @signup_queue.invited_users_count) %></h3>
+        <p>People ahead of you</p>
+      </div>
+      <p>Or share this unique link:</p>
+      <%= link_to root_url(:ref => @signup_queue.user_hash), root_path(:ref => @signup_queue.user_hash) %>
+      <%= social_share_button_tag("Share", :url => root_url(:ref => @signup_queue.user_hash)) %>
+  <% end %>
 </div>
