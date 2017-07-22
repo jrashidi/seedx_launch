@@ -1,7 +1,7 @@
 class SignupQueuesController < ApplicationController
   # index show new edit create update destroy
   def index
-    @signup_queues = SignupQueue.all
+    @signup_queues = SignupQueue.order(:id)
   end
 
   def show
@@ -21,8 +21,6 @@ class SignupQueuesController < ApplicationController
 
       if params[:ref].present?
         @user = SignupQueue.find_by_user_hash(params[:ref])
-        @user.increment!(:invited_users_count)
-
         @signup_queue.invited_by_user_id = @user.id
       end
 
@@ -48,6 +46,10 @@ class SignupQueuesController < ApplicationController
     if @user.is_email_confirmed == false
       @user.is_email_confirmed = true
       @user.save
+      if @user.invited_by_user_id.present?
+        @invited_by_user = SignupQueue.find(@user.invited_by_user_id)
+        @invited_by_user.increment!(:invited_users_count)
+      end
     end
     redirect_to action: "show", id: @user.id
   end
