@@ -7,7 +7,7 @@ class SignupMailer < ApplicationMailer
                          password: ENV["SENDGRID_PASSWORD"],
                          address: 'smtp.sendgrid.net' }
     mail( to: @user.email,
-    subject: 'Thanks for signing up for our amazing app',
+    subject: 'Thanks for signing up',
     delivery_method_options: delivery_options )
   end
 end
